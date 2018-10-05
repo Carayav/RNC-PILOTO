@@ -26,7 +26,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
   @Bean(name = "helloworld")
   public Wsdl11Definition defaultWsdl11Definition() {
     SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
-    wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/helloworld.wsdl"));
+    wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/RegistroNacionalCancer.wsdl"));
 
     return wsdl11Definition;
   }

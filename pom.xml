@@ -4,11 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.uv</groupId>
-  <artifactId>spring-ws-helloworld</artifactId>
+  <artifactId>rnc-piloto-helloworld</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>spring-ws-helloworld</name>
+  <name>rnc-piloto-helloworld</name>
   <description>Spring WS - SOAP Web Service Consumer Provider WSDL Example</description>
   <url>https://www.uv.com/spring-ws-soap-web-service-consumer-provider-wsdl-example.html</url>
 

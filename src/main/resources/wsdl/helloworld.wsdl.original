@@ -1,12 +1,15 @@
 <?xml version="1.0"?>
 <wsdl:definitions name="HelloWorld"
   targetNamespace="http://uv.com/services/helloworld"
-  xmlns:tns="http://uv.com/services/helloworld" xmlns:types="http://uv.com/types/helloworld"
-  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  xmlns:tns="http://uv.com/services/helloworld"
+  xmlns:types="http://uv.com/types/helloworld"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
 
   <wsdl:types>
     <xsd:schema targetNamespace="http://uv.com/types/helloworld"
-      xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+      xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      elementFormDefault="qualified"
       attributeFormDefault="unqualified" version="1.0">
 
       <xsd:element name="person">

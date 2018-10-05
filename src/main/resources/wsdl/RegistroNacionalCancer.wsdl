@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2018 rel. 2 (http://www.altova.com) by claudio araya (uv) -->
+<wsdl:definitions
+		xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+		xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+		xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+		xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:tns="http://uv.com/types/helloworld"
+		targetNamespace="http://uv.com/types/helloworld">
+	<wsdl:types>
+		<xsi:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema" 
+					xmlns:altova="http://www.altova.com/xml-schema-extensions" 
+					targetNamespace="http://uv.com/types/helloworld" 
+					elementFormDefault="qualified">
+			<xsi:element name="DiagnosticoDoc">
+				<xsi:complexType>
+					<xsi:sequence>
+						<xsi:element ref="tns:Paciente"/>
+						<xsi:element ref="tns:CreadorDocumento"/>
+						<xsi:element ref="tns:Sospecha"/>
+						<xsi:element ref="tns:Diagnostico"/>
+						<xsi:element name="OtrosDocumentos">
+							<xsi:complexType>
+								<xsi:sequence>
+									<xsi:element ref="tns:Archivo" minOccurs="0" maxOccurs="unbounded"/>
+								</xsi:sequence>
+							</xsi:complexType>
+						</xsi:element>
+					</xsi:sequence>
+				</xsi:complexType>
+			</xsi:element>
+			<xsi:element name="ResolucionTratamientoDoc">
+				<xsi:complexType>
+					<xsi:sequence>
+						<xsi:element name="PacienteRes">
+							<xsi:complexType>
+								<xsi:sequence>
+									<xsi:element name="RUT">
+										<xsi:simpleType>
+											<xsi:restriction base="xsi:nonNegativeInteger">
+												<xsi:minInclusive value="1"/>
+												<xsi:maxInclusive value="99999999"/>
+											</xsi:restriction>
+										</xsi:simpleType>
+									</xsi:element>
+									<xsi:element name="DV">
+										<xsi:simpleType>
+											<xsi:restriction base="xsi:string">
+												<xsi:length value="1"/>
+											</xsi:restriction>
+										</xsi:simpleType>
+									</xsi:element>
+								</xsi:sequence>
+							</xsi:complexType>
+						</xsi:element>
+						<xsi:element ref="tns:CreadorDocumento"/>
+						<xsi:element name="MedicoTratante">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:length value="120"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="TratamientoGeneral">
+							<xsi:complexType>
+								<xsi:sequence>
+									<xsi:element name="DescripcionTratamiento">
+										<xsi:simpleType>
+											<xsi:restriction base="xsi:string">
+												<xsi:maxLength value="150"/>
+											</xsi:restriction>
+										</xsi:simpleType>
+									</xsi:element>
+									<xsi:element name="EstadoTratamiento">
+										<xsi:simpleType>
+											<xsi:restriction base="xsi:int">
+												<xsi:minInclusive value="1"/>
+												<xsi:maxInclusive value="1"/>
+											</xsi:restriction>
+										</xsi:simpleType>
+									</xsi:element>
+									<xsi:element name="ResolucionComite" type="xsi:string"/>
+									<xsi:element name="ResolucionComite" type="xsi:string"/>
+									<xsi:element name="DescripcionResolucionComite" minOccurs="0">
+										<xsi:simpleType>
+											<xsi:restriction base="xsi:string">
+												<xsi:maxLength value="150"/>
+											</xsi:restriction>
+										</xsi:simpleType>
+									</xsi:element>
+									<xsi:element name="Comite">
+										<xsi:complexType>
+											<xsi:sequence>
+												<xsi:element name="MedicoParticipante" maxOccurs="unbounded">
+													<xsi:simpleType>
+														<xsi:restriction base="xsi:string">
+															<xsi:length value="120"/>
+														</xsi:restriction>
+													</xsi:simpleType>
+												</xsi:element>
+											</xsi:sequence>
+										</xsi:complexType>
+									</xsi:element>
+								</xsi:sequence>
+							</xsi:complexType>
+						</xsi:element>
+						<xsi:element name="Tratamientos">
+							<xsi:complexType>
+								<xsi:sequence>
+									<xsi:element ref="tns:Tratamiento" maxOccurs="unbounded"/>
+								</xsi:sequence>
+							</xsi:complexType>
+						</xsi:element>
+					</xsi:sequence>
+				</xsi:complexType>
+			</xsi:element>
+			<xsi:element name="Paciente">
+				<xsi:complexType>
+					<xsi:sequence>
+						<xsi:element name="RUT">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:nonNegativeInteger">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="99999999"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="DV">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:length value="1"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="Nombre">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:maxLength value="50"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="PrimerApellido">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:maxLength value="30"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="SegundoApellido">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:maxLength value="30"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="FechaDeNacimiento" type="xsi:date"/>
+						<xsi:element name="Genero">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:nonNegativeInteger">
+									<xsi:enumeration value="1"/>
+									<xsi:enumeration value="2"/>
+									<xsi:enumeration value="9"/>
+									<xsi:enumeration value="3"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="Nacionalidad" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="999"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="PuebloOriginario" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="0"/>
+									<xsi:maxInclusive value="12"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="EstadoConyugal" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xs:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="9"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="ReligionCulto" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xs:int">
+									<xsi:minInclusive value="01"/>
+									<xsi:maxInclusive value="11"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="NivelInstruccion" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="01"/>
+									<xsi:maxInclusive value="15"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="Ocupacion" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="9999"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="ActividadEconomica" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xs:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="999999"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="Prevision" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:enumeration value="1"/>
+									<xsi:enumeration value="2"/>
+									<xsi:enumeration value="3"/>
+									<xsi:enumeration value="5"/>
+									<xsi:enumeration value="6"/>
+									<xsi:enumeration value="7"/>
+									<xsi:enumeration value="9"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="BeneficiarioFonasa" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:length value="1"/>
+									<xsi:enumeration value="A"/>
+									<xsi:enumeration value="B"/>
+									<xsi:enumeration value="C"/>
+									<xsi:enumeration value="D"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="Region" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="15"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="Provincia" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="999" fixed="false"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="Comuna" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="99999"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="Direccion" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xs:string">
+									<xsi:length value="100"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+					</xsi:sequence>
+				</xsi:complexType>
+			</xsi:element>
+			<xsi:element name="CreadorDocumento">
+				<xsi:complexType>
+					<xsi:sequence>
+						<xsi:element ref="tns:Establecimiento"/>
+					</xsi:sequence>
+				</xsi:complexType>
+			</xsi:element>
+			<xsi:element name="Sospecha">
+				<xsi:complexType>
+					<xsi:sequence>
+						<xsi:element name="MedicoDerivador">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:maxLength value="50"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="CentroDerivador">
+							<xsi:complexType>
+								<xsi:sequence>
+									<xsi:element ref="tns:Establecimiento"/>
+								</xsi:sequence>
+							</xsi:complexType>
+						</xsi:element>
+						<xsi:element name="FechaPrimeraConsulta" type="xsi:date"/>
+						<xsi:element name="BreveHistoria">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:maxLength value="150"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="MotivoDerivacion">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="6"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+					</xsi:sequence>
+				</xsi:complexType>
+			</xsi:element>
+			<xsi:element name="Diagnostico">
+				<xsi:complexType>
+					<xsi:sequence>
+						<xsi:element name="FechaDiagnostico" type="xsi:date"/>
+						<xsi:element name="DiagnosticoIngresoCentro" type="xsi:string"/>
+						<xsi:element name="DiagnosticoComite" type="xsi:string"/>
+						<xsi:element name="DiagnosticoCIE10">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:length value="6"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="TNM" type="xsi:string"/>
+						<xsi:element name="Estadio">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:maxLength value="5"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="DiagnosticoSOME" type="xsi:string"/>
+						<xsi:element name="TipoComite" type="xsi:string" minOccurs="0"/>
+						<xsi:element name="ECOG" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="0"/>
+									<xsi:maxInclusive value="4"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+					</xsi:sequence>
+				</xsi:complexType>
+			</xsi:element>
+			<xsi:element name="Archivo">
+				<xsi:complexType>
+					<xsi:sequence>
+						<xsi:element name="TipoMime">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:maxLength value="255"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="NombreArchivo">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:maxLength value="255"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="Contenido" type="xsi:base64Binary"/>
+						<xsi:element name="Tamanio" type="xsi:long" minOccurs="0"/>
+						<xsi:element name="Hash" minOccurs="0">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:length value="40"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+					</xsi:sequence>
+				</xsi:complexType>
+			</xsi:element>
+			<xsi:element name="Tratamiento">
+				<xsi:complexType>
+					<xsi:sequence>
+						<xsi:element name="TipoTratamiento">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="8"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="IntencionTratamiento">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="2"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="FechaIntencion" type="xsi:date"/>
+						<xsi:element name="FechaComite" type="xsi:date"/>
+						<xsi:element name="Medicamentos" minOccurs="0">
+							<xsi:complexType>
+								<xsi:sequence>
+									<xsi:element name="Medicamento" maxOccurs="unbounded"/>
+								</xsi:sequence>
+							</xsi:complexType>
+						</xsi:element>
+					</xsi:sequence>
+				</xsi:complexType>
+			</xsi:element>
+			<xsi:element name="Establecimiento">
+				<xsi:complexType>
+					<xsi:sequence>
+						<xsi:element name="NombreEstablecimiento">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:string">
+									<xsi:maxLength value="150"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="CodigoEstablecimiento">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="99999"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+						<xsi:element name="ServicioSalud">
+							<xsi:simpleType>
+								<xsi:restriction base="xsi:int">
+									<xsi:minInclusive value="1"/>
+									<xsi:maxInclusive value="99"/>
+								</xsi:restriction>
+							</xsi:simpleType>
+						</xsi:element>
+					</xsi:sequence>
+				</xsi:complexType>
+			</xsi:element>
+			<xsi:element name="Response">
+				<xsi:complexType>
+					<xsi:sequence>
+						<xsi:element name="Codigo"/>
+						<xsi:element name="Mensaje"/>
+					</xsi:sequence>
+				</xsi:complexType>
+			</xsi:element>
+		</xsi:schema>
+	</wsdl:types>
+	<wsdl:message name="DiagnosticoReq">
+		<wsdl:part name="parameter" element="tns:DiagnosticoDoc"/>
+	</wsdl:message>
+	<wsdl:message name="ResolucionTratamientoRes">
+		<wsdl:part name="parameter" element="tns:Response"/>
+	</wsdl:message>
+	<wsdl:message name="ResolucionTratamientoReq">
+		<wsdl:part name="parameter" element="tns:ResolucionTratamientoDoc"/>
+	</wsdl:message>
+	<wsdl:message name="DiagnosticoRes">
+		<wsdl:part name="parameter" element="tns:Response"/>
+	</wsdl:message>
+	<wsdl:portType name="RegistroPortType">
+		<wsdl:operation name="ResolucionTratamientoOp">
+			<wsdl:input message="tns:ResolucionTratamientoReq"/>
+			<wsdl:output message="tns:ResolucionTratamientoRes"/>
+		</wsdl:operation>
+		<wsdl:operation name="DiagnosticoOp">
+			<wsdl:input message="tns:DiagnosticoReq"/>
+			<wsdl:output message="tns:DiagnosticoRes"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="RegistroNacionalCancerBinding" type="tns:RegistroPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="ResolucionTratamientoOp">
+			<soap:operation soapAction="urn:#NewOperation"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="DiagnosticoOp">
+			<soap:operation soapAction="urn:#NewOperation"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="RegistroNacionalCancerService">
+		<wsdl:port name="RegistroNacionalCancerPort" binding="tns:RegistroNacionalCancerBinding">
+			<soap:address location="http://localhost:8000/wsdl"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
