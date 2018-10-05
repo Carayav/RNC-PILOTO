@@ -1,4 +1,4 @@
-package com.codenotfound.ws.endpoint;
+package com.uv.ws.endpoint;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -20,7 +20,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     MessageDispatcherServlet servlet = new MessageDispatcherServlet();
     servlet.setApplicationContext(applicationContext);
 
-    return new ServletRegistrationBean(servlet, "/codenotfound/ws/*");
+    return new ServletRegistrationBean(servlet, "/uv/ws/*");
   }
 
   @Bean(name = "helloworld")

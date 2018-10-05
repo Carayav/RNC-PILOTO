@@ -1,4 +1,4 @@
-package com.codenotfound.ws.client;
+package com.uv.ws.client;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +15,7 @@ public class ClientConfig {
   @Bean
   Jaxb2Marshaller jaxb2Marshaller() {
     Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
-    jaxb2Marshaller.setContextPath("com.codenotfound.types.helloworld");
+    jaxb2Marshaller.setContextPath("com.uv.types.helloworld");
 
     return jaxb2Marshaller;
   }

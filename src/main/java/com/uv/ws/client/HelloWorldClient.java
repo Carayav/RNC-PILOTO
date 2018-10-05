@@ -1,4 +1,4 @@
-package com.codenotfound.ws.client;
+package com.uv.ws.client;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -6,9 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
 
-import com.codenotfound.types.helloworld.Greeting;
-import com.codenotfound.types.helloworld.ObjectFactory;
-import com.codenotfound.types.helloworld.Person;
+import com.uv.types.helloworld.Greeting;
+import com.uv.types.helloworld.ObjectFactory;
+import com.uv.types.helloworld.Person;
 
 @Component
 public class HelloWorldClient {

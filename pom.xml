@@ -3,14 +3,14 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.codenotfound</groupId>
+  <groupId>com.uv</groupId>
   <artifactId>spring-ws-helloworld</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>spring-ws-helloworld</name>
   <description>Spring WS - SOAP Web Service Consumer Provider WSDL Example</description>
-  <url>https://www.codenotfound.com/spring-ws-soap-web-service-consumer-provider-wsdl-example.html</url>
+  <url>https://www.uv.com/spring-ws-soap-web-service-consumer-provider-wsdl-example.html</url>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -60,7 +60,10 @@
           <schemaIncludes>
             <include>*.wsdl</include>
           </schemaIncludes>
+          <packageName>com.uv.myschema</packageName>
         </configuration>
+
+      </configuration>
       </plugin>
     </plugins>
   </build>
