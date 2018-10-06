@@ -8,12 +8,12 @@
         xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
         xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns:tns="http://uv.com/types/helloworld"
-        targetNamespace="http://uv.com/types/helloworld">
+        xmlns:tns="http://uv.com/types/rnc"
+        targetNamespace="http://uv.com/types/rnc">
 	<wsdl:types>
 		<xsi:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema"
                     xmlns:altova="http://www.altova.com/xml-schema-extensions"
-                    targetNamespace="http://uv.com/types/helloworld"
+                    targetNamespace="http://uv.com/types/rnc"
                     elementFormDefault="qualified">
 			<xsi:element name="DiagnosticoDoc">
 				<xsi:complexType>
@@ -486,7 +486,7 @@
 	<wsdl:binding name="RegistroNacionalCancerBinding" type="tns:RegistroPortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<wsdl:operation name="UploadDocOp">
-			<soap:operation soapAction="http://uv.com/services/helloworld/UploadDocOp"/>
+			<soap:operation soapAction="http://uv.com/services/rnc/UploadDocOp"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>
@@ -497,7 +497,7 @@
 	</wsdl:binding>
 	<wsdl:service name="RegistroNacionalCancerService">
 		<wsdl:port name="RegistroNacionalCancerPort" binding="tns:RegistroNacionalCancerBinding">
-			<soap:address location="http://localhost:9090/uv/ws/helloworld"/>
+			<soap:address location="http://localhost:9090/uv/ws/rnc"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

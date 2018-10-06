@@ -15,7 +15,7 @@ public class ClientConfig {
   @Bean
   Jaxb2Marshaller jaxb2Marshaller() {
     Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
-    jaxb2Marshaller.setContextPath("com.uv.types.helloworld");
+    jaxb2Marshaller.setContextPath("com.uv.types.rnc");
 
     return jaxb2Marshaller;
   }

@@ -9,17 +9,17 @@ import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 
-import com.uv.types.helloworld.Response;
-import com.uv.types.helloworld.ObjectFactory;
-import com.uv.types.helloworld.Paciente;
-import com.uv.types.helloworld.Documento;
+import com.uv.types.rnc.Response;
+import com.uv.types.rnc.ObjectFactory;
+import com.uv.types.rnc.Paciente;
+import com.uv.types.rnc.Documento;
 
 @Endpoint
-public class HelloWorldEndpoint {
+public class RncEndpoint {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(HelloWorldEndpoint.class);
+  private static final Logger LOGGER = LoggerFactory.getLogger(RncEndpoint.class);
 
-  @PayloadRoot(namespace = "http://uv.com/types/helloworld", localPart = "Documento")
+  @PayloadRoot(namespace = "http://uv.com/types/rnc", localPart = "Documento")
   @ResponsePayload
   public Response UploadDocOp(@RequestPayload Documento request) {
     //Header
