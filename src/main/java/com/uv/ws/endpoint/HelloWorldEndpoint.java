@@ -21,7 +21,7 @@ public class HelloWorldEndpoint {
 
   @PayloadRoot(namespace = "http://uv.com/types/helloworld", localPart = "Documento")
   @ResponsePayload
-  public Response sayHello(@RequestPayload Documento request) {
+  public Response UploadDocOp(@RequestPayload Documento request) {
     //Header
     Paciente paciente = request.getHeaderDoc().getPaciente();
     LOGGER.info("Endpoint recibe Documento");

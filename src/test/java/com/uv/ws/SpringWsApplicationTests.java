@@ -20,9 +20,7 @@ public class SpringWsApplicationTests {
 
   @Test
   public void testSayHello() {
-    System.out.println(helloWorldClient.sayHello("Claudio", "Araya", "Valenzuela", "15095162-3"));
     assertThat(helloWorldClient.sayHello("Claudio", "Araya", "Valenzuela", "15095162-3")).
             isEqualTo("Nombre: Claudio Araya Valenzuela RUT: 15095162-3");
-    //assertThat(true);
   }
 }

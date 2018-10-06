@@ -486,7 +486,7 @@
 	<wsdl:binding name="RegistroNacionalCancerBinding" type="tns:RegistroPortType">
 		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
 		<wsdl:operation name="UploadDocOp">
-			<soap:operation soapAction="urn:#NewOperation"/>
+			<soap:operation soapAction="http://uv.com/services/helloworld/UploadDocOp"/>
 			<wsdl:input>
 				<soap:body use="literal"/>
 			</wsdl:input>
@@ -497,7 +497,7 @@
 	</wsdl:binding>
 	<wsdl:service name="RegistroNacionalCancerService">
 		<wsdl:port name="RegistroNacionalCancerPort" binding="tns:RegistroNacionalCancerBinding">
-			<soap:address location="http://localhost:8000/wsdl"/>
+			<soap:address location="http://localhost:9090/uv/ws/helloworld"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>
