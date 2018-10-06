@@ -6,13 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="rnc-piloto-helloworld" />
-        <module name="spring-ws-helloworld" />
+        <module name="rnc-piloto" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="rnc-piloto-helloworld" target="1.7" />
-      <module name="spring-ws-helloworld" target="1.8" />
+      <module name="rnc-piloto" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>
