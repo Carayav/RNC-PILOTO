@@ -1,17 +1,11 @@
 package com.uv.ws.client;
 
+import com.uv.types.helloworld.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ws.client.core.WebServiceTemplate;
-
-//import com.uv.types.helloworld.Greeting;
-import com.uv.types.helloworld.Response;
-import com.uv.types.helloworld.ObjectFactory;
-//import com.uv.types.helloworld.Person;
-import com.uv.types.helloworld.ResolucionTratamientoDoc;
-
 
 @Component
 public class HelloWorldClient {
@@ -21,21 +15,26 @@ public class HelloWorldClient {
   @Autowired
   private WebServiceTemplate webServiceTemplate;
 
-  public String sayHello(String medicoTratante, int rut) {
+  public String sayHello(String nombre, String primerApellido, String segundoApellido, String rut) {
     ObjectFactory factory = new ObjectFactory();
-    ResolucionTratamientoDoc resolucionTratamientoDoc= factory.createResolucionTratamientoDoc();
-    ResolucionTratamientoDoc.PacienteRes pacienteRes = factory.createResolucionTratamientoDocPacienteRes();
-    pacienteRes.setRUT(rut);
+    Documento documento = factory.createDocumento();
+    Paciente paciente = factory.createPaciente();
+    HeaderDoc header = factory.createHeaderDoc();
+    paciente.setRUT(rut);
+    paciente.setNombre(nombre);
+    paciente.setPrimerApellido(primerApellido);
+    paciente.setSegundoApellido(segundoApellido);
+    header.setPaciente(paciente);
+    documento.setHeaderDoc(header);
 
-    resolucionTratamientoDoc.setMedicoTratante(medicoTratante);
-    resolucionTratamientoDoc.setPacienteRes(pacienteRes);
+    LOGGER.info("Cliente enviando Documento");
+    LOGGER.info("--HEADER--");
+    String nombreCompleto = paciente.getNombre() + ' ' + paciente.getPrimerApellido() + ' ' + paciente.getSegundoApellido();
+    LOGGER.info("Paciente[Nombre:'{}', RUT={}]", nombreCompleto, paciente.getRUT());
 
-    LOGGER.info("Client sending resolucionTratamientoDoc[MedicoTratante={},RUT_paciente={}]", resolucionTratamientoDoc.getMedicoTratante(),
-        resolucionTratamientoDoc.getPacienteRes().getRUT());
+    Response response = (Response) webServiceTemplate.marshalSendAndReceive(documento);
 
-    Response response = (Response) webServiceTemplate.marshalSendAndReceive(resolucionTratamientoDoc);
-
-    LOGGER.info("Client received response=[Codigo={} Mensaje='{}'", response.getCodigo(), response.getMensaje());
+    LOGGER.info("Cliente recibe response=[Cod:{} Msj='{}'", response.getCodigo(), response.getMensaje());
     return response.getMensaje().toString();
   }
 }
