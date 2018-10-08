@@ -52,19 +52,6 @@ public class RncEndpoint {
       }
     }
 
-
-
-    HeaderDoc header = request.getHeaderDoc();
-    Documento.BodyDoc body = request.getBodyDoc();
-    Paciente paciente = header.getPaciente();
-
-
-    String nombreCompleto = paciente.getNombre() + ' ' + paciente.getPrimerApellido() + ' ' + paciente.getSegundoApellido();
-    LOGGER.info("Endpoint recibe Documento");
-    LOGGER.info("Paciente[Nombre:'{}', RUT:{}]", nombreCompleto, paciente.getRUT());
-
-    String mensaje = "Nombre:" + nombreCompleto + " RUT:" + paciente.getRUT();
-
     response.setCodigo(ErrorCodes.CARGA_EXITOSA_COD);
     response.setMensaje(ErrorCodes.CARGA_EXITOSA_STR);
 
