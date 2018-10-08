@@ -21,6 +21,6 @@ public class SpringWsApplicationTests {
   @Test
   public void testUploadDocOp() {
     assertThat(rncClient.UploadDocOp("Claudio", "Araya", "Valenzuela", "15095162-3")).
-            isEqualTo("Nombre: Claudio Araya Valenzuela RUT: 15095162-3");
+            isEqualTo("Nombre:Claudio Araya Valenzuela RUT:15095162-3");
   }
 }

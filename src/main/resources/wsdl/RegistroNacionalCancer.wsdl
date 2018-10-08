@@ -60,7 +60,6 @@
 										</xsi:simpleType>
 									</xsi:element>
 									<xsi:element name="ResolucionComite" type="xsi:string"/>
-									<xsi:element name="ResolucionComite" type="xsi:string"/>
 									<xsi:element name="DescripcionResolucionComite" minOccurs="0">
 										<xsi:simpleType>
 											<xsi:restriction base="xsi:string">

@@ -29,13 +29,13 @@ public class RncClient {
     documento.setHeaderDoc(header);
 
     LOGGER.info("Cliente enviando Documento");
-    LOGGER.info("--HEADER--");
     String nombreCompleto = paciente.getNombre() + ' ' + paciente.getPrimerApellido() + ' ' + paciente.getSegundoApellido();
-    LOGGER.info("Paciente[Nombre:'{}', RUT={}]", nombreCompleto, paciente.getRUT());
+    LOGGER.info("Paciente[Nombre:'{}', RUT:{}]", nombreCompleto, paciente.getRUT());
 
     Response response = (Response) webServiceTemplate.marshalSendAndReceive(documento);
 
-    LOGGER.info("Cliente recibe response=[Cod:{} Msj='{}'", response.getCodigo(), response.getMensaje());
+    LOGGER.info("Cliente recibe Respuesta");
+    LOGGER.info("Cod:{} Msj:'{}'", response.getCodigo(), response.getMensaje());
     return response.getMensaje().toString();
   }
 }
