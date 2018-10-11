@@ -5,22 +5,23 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
-    <servlet-name>pruebatoken-api-back</servlet-name>
+    <servlet-name>rnc-piloto</servlet-name>
+    <!--  org.springframework.web.servlet.DispatcherServlet -->
     <servlet-class>
-      org.springframework.web.servlet.DispatcherServlet
+      org.springframework.ws.transport.http.MessageDispatcherServlet
     </servlet-class>
     <init-param>
       <param-name>contextClass</param-name>
-      <param-value>org.springframework.web.context.support.AnnotationConfigWebApplicationContext</param-value>
+      <param-value>org.springframework.context.ApplicationContext</param-value>
     </init-param>
     <init-param>
       <param-name>contextConfigLocation</param-name>
-      <param-value>cl.minsal.comparador.pruebalogin.init.WebAppConfig</param-value>
+      <param-value>com.uv.ws.endpoint.WebServiceConfig</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
-    <servlet-name>pruebatoken-api-back</servlet-name>
+    <servlet-name>rnc-piloto</servlet-name>
     <url-pattern>/*</url-pattern>
   </servlet-mapping>
 </web-app>
