@@ -1,4 +1,5 @@
-package com.codenotfound.ws.endpoint;
+package com.uv.ws.endpoint;
+
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -20,13 +21,13 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     MessageDispatcherServlet servlet = new MessageDispatcherServlet();
     servlet.setApplicationContext(applicationContext);
 
-    return new ServletRegistrationBean(servlet, "/codenotfound/ws/*");
+    return new ServletRegistrationBean(servlet , "/uv/ws/*");
   }
 
-  @Bean(name = "helloworld")
+  @Bean(name = "rnc")
   public Wsdl11Definition defaultWsdl11Definition() {
     SimpleWsdl11Definition wsdl11Definition = new SimpleWsdl11Definition();
-    wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/helloworld.wsdl"));
+    wsdl11Definition.setWsdl(new ClassPathResource("/wsdl/RegistroNacionalCancer.wsdl"));
 
     return wsdl11Definition;
   }

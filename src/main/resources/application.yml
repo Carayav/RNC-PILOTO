@@ -1,5 +1,5 @@
 client:
-  default-uri: http://localhost:9090/codenotfound/ws/helloworld
+  default-uri: http://localhost:9090/uv/ws/rnc
 
 server:
   port: 9090

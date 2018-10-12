@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/spring-ws-helloworld.iml" filepath="$PROJECT_DIR$/spring-ws-helloworld.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rnc-piloto.iml" filepath="$PROJECT_DIR$/rnc-piloto.iml" />
+      <!--<module fileurl="file://$PROJECT_DIR$/spring-ws-helloworld.iml" filepath="$PROJECT_DIR$/spring-ws-helloworld.iml" />-->
     </modules>
   </component>
 </project>

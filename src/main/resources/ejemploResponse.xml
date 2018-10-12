@@ -1,0 +1,19 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <Response xmlns="http://new.webservice.namespace">
+         <Codigo>CODIGO</Codigo>
+         <Mensaje>MENSAJE</Mensaje>
+      </Response>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+        <!--
+        CODIGO:MENSAJE
+        001:CARGA EXITOSA
+        100:FORMATO NO VALIDO ELEMENTO {ELEMENTO} VALOR: {VALOR ELEMENTO}
+        101:CODIGO NO VALIDO ELEMENTO {ELEMENTO} VALOR: {VALOR ELEMENTO}
+        102:ELEMENTO NO VALIDO {ELEMENTO} VALOR: {VALOR ELEMENTO}
+        103:ELEMENTO VACIO {ELEMENTO}
+        200:ERROR CONEXION BASE DE DATOS
+        201:ERROR SISTEMA
+        -->
