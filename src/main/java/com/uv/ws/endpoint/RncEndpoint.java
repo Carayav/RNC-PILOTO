@@ -2,7 +2,9 @@ package com.uv.ws.endpoint;
 
 
 import com.uv.types.rnc.Documento;
+import com.uv.types.rnc.HeaderDoc;
 import com.uv.types.rnc.ObjectFactory;
+import com.uv.types.rnc.Paciente;
 import com.uv.types.rnc.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

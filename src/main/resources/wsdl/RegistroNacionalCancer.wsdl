@@ -496,8 +496,7 @@
 	</wsdl:binding>
 	<wsdl:service name="RegistroNacionalCancerService">
 		<wsdl:port name="RegistroNacionalCancerPort" binding="tns:RegistroNacionalCancerBinding">
-			<!--  localhost:9090/uv/ws/rnc  -->
-      <soap:address location="http://wasqa1.naiss.local:9080/WsSoapRNC/uv/ws/rnc.wsdl"/>
+			<soap:address location="http://localhost:9090/uv/ws/rnc"/>
 		</wsdl:port>
 	</wsdl:service>
 </wsdl:definitions>

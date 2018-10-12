@@ -1,12 +1,14 @@
 #!/bin/bash
+sudo archlinux-java set java-7-openjdk
 if [ "$1" == local ]
 then
-  cp pom-local.xml pom.xml
-  mvn clean install -Dmaven.test.skip=true -U
+#  cp pom-local.xml pom.xml
+  mvn -f pom-local.xml clean install -Dmaven.test.skip=true -U
   java -jar target/*.war
 elif [ "$1" == websphere ]
-  cp pom-websphere.xml pom.xml
 then
-  mvn clean install -Dmaven.test.skip=true -U
+#  cp pom-websphere.xml pom.xml
+  mvn -f pom-websphere.xml clean install -Dmaven.test.skip=true -U
 fi
+sudo archlinux-java set java-8-openjdk
 

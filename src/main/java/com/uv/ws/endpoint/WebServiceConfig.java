@@ -1,5 +1,6 @@
 package com.uv.ws.endpoint;
 
+
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -20,9 +21,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
     MessageDispatcherServlet servlet = new MessageDispatcherServlet();
     servlet.setApplicationContext(applicationContext);
 
-    //return new ServletRegistrationBean(servlet, "/uv/ws/*");
-    //WsSoapRNC
-    return new ServletRegistrationBean(servlet, "/WsSoapRNC/uv/ws/*");
+    return new ServletRegistrationBean(servlet , "/uv/ws/*");
   }
 
   @Bean(name = "rnc")
