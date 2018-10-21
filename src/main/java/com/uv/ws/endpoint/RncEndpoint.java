@@ -1,13 +1,18 @@
 package com.uv.ws.endpoint;
 
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 import com.uv.types.rnc.Documento;
-import com.uv.types.rnc.HeaderDoc;
 import com.uv.types.rnc.ObjectFactory;
-import com.uv.types.rnc.Paciente;
 import com.uv.types.rnc.Response;
+import com.uv.ws.endpoint.datalayer.PacienteData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.validation.FieldError;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
@@ -16,18 +21,23 @@ import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
 import java.util.List;
 
+
 @Endpoint
 public class RncEndpoint {
   private static final Logger LOGGER = LoggerFactory.getLogger(RncEndpoint.class);
 
+
+
+
   @PayloadRoot(namespace = "http://uv.com/types/rnc", localPart = "Documento")
   @ResponsePayload
-  public Response UploadDocOp(@RequestPayload Documento request) {
+  public Response UploadDocOp(@RequestPayload Documento request)  {
     String msj;
     ObjectFactory factory = new ObjectFactory();
     Response response = factory.createResponse();
 
-    DocumentValidadorCampos reqProc = new DocumentValidadorCampos(request);
+
+    DocumentValidator reqProc = new DocumentValidator(request);
     List<FieldError> allErrors = reqProc.start();
 
     for (FieldError error : allErrors) {
@@ -51,6 +61,19 @@ public class RncEndpoint {
         return response;
       }
     }
+      Gson gson = new GsonBuilder().setPrettyPrinting().create();
+      JsonParser jp = new JsonParser();
+      String out = (new Data(request)).toString();
+      JsonElement je = jp.parse(out);
+      String prettyJsonString = gson.toJson(je);
+
+
+      LOGGER.info(prettyJsonString);
+
+
+    PacienteData pacData = new PacienteData();
+    pacData.save(request);
+
 
     response.setCodigo(ErrorCodes.CARGA_EXITOSA_COD);
     response.setMensaje(ErrorCodes.CARGA_EXITOSA_STR);

@@ -23,7 +23,7 @@ public class ClientConfig {
   @Bean
   public WebServiceTemplate webServiceTemplate() {
     WebServiceTemplate webServiceTemplate = new WebServiceTemplate();
-    webServiceTemplate.setMarshaller(jaxb2Marshaller());
+//    webServiceTemplate.setMarshaller(jaxb2Marshaller());
     webServiceTemplate.setUnmarshaller(jaxb2Marshaller());
     webServiceTemplate.setDefaultUri(defaultUri);
 

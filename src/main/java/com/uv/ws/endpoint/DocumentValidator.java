@@ -9,12 +9,12 @@ import org.springframework.validation.FieldError;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DocumentValidadorCampos extends ValidadorCampos {
+public class DocumentValidator extends ValidadorCampos {
     private Documento doc;
     private HeaderDoc header;
     private HeaderDocValidadorCampos headerProc;
 
-    public DocumentValidadorCampos(Documento request) {
+    public DocumentValidator(Documento request) {
         this.doc = request;
         this.header = request.getHeaderDoc();
         this.headerProc = new HeaderDocValidadorCampos(request.getHeaderDoc());

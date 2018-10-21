@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+  
+<hibernate-configuration>
+    <session-factory>
+        <!-- Connection settings -->
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/rnc_bd?currentSchema=schema_rnc</property>
+        <property name="hibernate.connection.username">postgres</property>
+        <property name="hibernate.connection.password">123456</property>
+        <!-- SQL dialect -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <!-- Print executed SQL to stdout -->
+        <property name="show_sql">true</property>
+        <!-- Update database on startup -->
+        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+        <!-- Annotated entity classes -->
+        <mapping class="com.uv.model.Paciente"/>
+        <mapping class="com.uv.model.Antecedentes"/>
+        <mapping class="com.uv.model.Localizacion"/>
+        <mapping class="com.uv.model.Documentos"/>
+        <mapping class="com.uv.model.Archivos"/>
+        <mapping class="com.uv.model.Centro_derivador"/>
+        <mapping class="com.uv.model.Medico"/>
+
+        <mapping class="com.uv.model.Tratamiento_indicado"/>
+        <mapping class="com.uv.model.Tratamiento"/>
+        <mapping class="com.uv.model.Archivos"/>
+        <mapping class="com.uv.model.Diagnostico"/>
+        <mapping class="com.uv.model.PacienteSearch"/>       
+    </session-factory>
+</hibernate-configuration>

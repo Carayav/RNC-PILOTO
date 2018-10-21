@@ -14,7 +14,52 @@
 		<xsi:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema"
                     xmlns:altova="http://www.altova.com/xml-schema-extensions"
                     targetNamespace="http://uv.com/types/rnc"
-                    elementFormDefault="qualified">
+                    elementFormDefault="qualified"
+					xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+					xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"
+					jaxb:version="2.1"
+					xmlns:annox="http://annox.dev.java.net"
+					jaxb:extensionBindingPrefixes="annox">
+
+
+
+			<xsd:complexType name="FooType">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<annox:annotate>@java.lang.SuppressWarnings({"unchecked","rawtypes"})</annox:annotate>
+						<annox:annotate target="package">@javax.annotation.Generated({"XJC","JAXB2 Annotate Plugin"})</annox:annotate>
+					</xsd:appinfo>
+				</xsd:annotation>
+				<xsd:sequence>
+					<xsd:element name="bar" type="xsd:string"/>
+					<xsd:element name="foobar" type="xsd:string">
+						<xsd:annotation>
+							<xsd:appinfo>
+								<annox:annotate>@java.lang.SuppressWarnings({"unchecked","rawtypes"})</annox:annotate>
+								<annox:annotate target="setter">@java.lang.Deprecated</annox:annotate>
+								<annox:annotate target="setter-parameter">@java.lang.Deprecated</annox:annotate>
+								<annox:annotate target="getter">@java.lang.Deprecated</annox:annotate>
+								<annox:annotate target="field">@java.lang.Deprecated</annox:annotate>
+								<annox:annotate target="class">@java.lang.Deprecated</annox:annotate>
+							</xsd:appinfo>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:complexType>
+
+			<xs:simpleType name="FooEnum">
+				<xs:annotation>
+					<xs:appinfo>
+						<annox:annotateEnumValueMethod>@java.lang.Deprecated</annox:annotateEnumValueMethod>
+					</xs:appinfo>
+				</xs:annotation>
+
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="BAR"/>
+					<xs:enumeration value="BAZ"/>
+				</xs:restriction>
+			</xs:simpleType>
+
 			<xsi:element name="DiagnosticoDoc">
 				<xsi:complexType>
 					<xsi:sequence>

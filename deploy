@@ -4,6 +4,7 @@ if [ "$1" == local ]
 then
 #  cp pom-local.xml pom.xml
   mvn -f pom-local.xml clean install -Dmaven.test.skip=true -U
+  sudo archlinux-java set java-8-openjdk
   java -jar target/*.war
 elif [ "$1" == websphere ]
 then
