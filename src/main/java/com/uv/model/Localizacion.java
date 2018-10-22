@@ -1,4 +1,5 @@
 package com.uv.model;
+
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -8,26 +9,26 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Localizacion implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	private Integer id;
+	private Integer id_localizacion;
 	private Integer region;
 	private Integer provincia;
 	private Integer comuna;
 	private String direccion;
-	
+
 	@OneToOne
-    @JoinColumn(name = "id")
-    private Paciente paciente;
-	
+	@JoinColumn(name = "id_localizacion")
+	private Paciente paciente;
+
 	@OneToOne
-    @JoinColumn(name = "id")
-    private Centro_derivador centro_derivador;
-	
+	@JoinColumn(name = "id_localizacion")
+	private Establecimiento establecimiento;
+
 	public Integer getId() {
-		return id;
+		return id_localizacion;
 	}
 
 	public Integer getRegion() {
@@ -45,6 +46,6 @@ public class Localizacion implements Serializable {
 	public String getDireccion() {
 		return direccion;
 	}
-	
-	
+
+
 }

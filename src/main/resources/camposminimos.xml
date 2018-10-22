@@ -1,0 +1,50 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:new="http://new.webservice.namespace">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <new:ResolucionTratamientoDoc>
+         <new:PacienteRes>
+            <new:RUT>13654668</new:RUT>
+            <new:DV>6</new:DV>
+         </new:PacienteRes>
+         <new:CreadorDocumento>
+            <new:Establecimiento>
+               <new:NombreEstablecimiento>Instituto Nacional del Cancer</new:NombreEstablecimiento>
+               <new:CodigoEstablecimiento>109103</new:CodigoEstablecimiento>
+               <new:ServicioSalud>09</new:ServicioSalud>
+            </new:Establecimiento>
+         </new:CreadorDocumento>
+         <new:MedicoTratante>José Pérez</new:MedicoTratante>
+         <new:TratamientoGeneral>
+            <new:DescripcionTratamiento>''</new:DescripcionTratamiento>
+ <!--todo lo que es tratamiento no está dentro del sistema de comité-->
+            <new:EstadoTratamiento>''</new:EstadoTratamiento>
+            <new:ResolucionComite>1</new:ResolucionComite>
+ <!--(listado que debe enviar incancer)-->
+            <new:ResolucionComite>''</new:ResolucionComite>
+ <!--esto es un campo repetido?-->
+            <!--Optional:-->
+            <new:DescripcionResolucionComite>''</new:DescripcionResolucionComite>
+            <new:Comite>
+               <!--1 or more repetitions:-->
+               <new:MedicoParticipante>''</new:MedicoParticipante>
+ <!--los medicos pueden estar en diferentes comité, esto no es para RNC-->
+            </new:Comite>
+         </new:TratamientoGeneral>
+         <new:Tratamientos>
+            <!--1 or more repetitions:-->
+            <new:Tratamiento>
+               <new:TipoTratamiento>''</new:TipoTratamiento>
+
+               <new:IntencionTratamiento>''</new:IntencionTratamiento>
+               <new:FechaIntencion>''</new:FechaIntencion>
+               <new:FechaComite>20-09-2018</new:FechaComite>
+               <!--Optional:-->
+               <new:Medicamentos>
+                  <!--1 or more repetitions:-->
+                  <new:Medicamento>''</new:Medicamento>
+               </new:Medicamentos>
+            </new:Tratamiento>
+         </new:Tratamientos>
+      </new:ResolucionTratamientoDoc>
+   </soapenv:Body>
+</soapenv:Envelope>

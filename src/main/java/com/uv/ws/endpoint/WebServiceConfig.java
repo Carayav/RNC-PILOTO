@@ -32,4 +32,7 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 
     return wsdl11Definition;
   }
+
+
+
 }

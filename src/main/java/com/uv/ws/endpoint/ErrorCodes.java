@@ -11,5 +11,6 @@ public final class ErrorCodes {
     public static final String ELEMENTO_NO_VALIDO_STR = "ELEMENTO NO VALIDO ";
     public static final String ELEMENTO_VACIO_COD = "103";
     public static final String ELEMENTO_VACIO_STR = "ELEMENTO VACIO ";
-
+    public static final String CONEXION_BD_COD = "200";
+    public static final String CONEXION_BD_STR = "PROBLEMA CONEXION A BD";
 }

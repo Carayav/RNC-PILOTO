@@ -1,53 +1,130 @@
 package com.uv.model;
 
+import com.vladmihalcea.hibernate.type.array.IntArrayType;
+import com.vladmihalcea.hibernate.type.array.StringArrayType;
+import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+import com.vladmihalcea.hibernate.type.json.JsonStringType;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import org.hibernate.annotations.TypeDefs;
+
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import static javax.persistence.GenerationType.SEQUENCE;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "documentos")
+@TypeDefs({
+		@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
+})
 public class Documentos implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-	private Integer id;
-	private String tipo_documento;
-	private String pais_emisor;
-	private Integer numero_documento;
-	private Integer id_medico;
-	
+	@GeneratedValue(strategy = SEQUENCE)
+	private Integer id_documentos;
+
 	@ManyToOne
-    @JoinColumn(name="id_paciente", nullable=false)
+	@JoinColumn(name="id_paciente", nullable=false)
 	private Paciente paciente;
-	
-	@OneToMany(mappedBy="documentos")
-	@JsonIgnore
-	private Set<Archivos> archivos;
-	
-	public Integer getId() {
-		return id;
-	}
-	public String getTipo_documento() {
-		return tipo_documento;
-	}
-	public String getPais_emisor() {
-		return pais_emisor;
-	}
-	public Integer getNumero_documento() {
-		return numero_documento;
-	}
-	public Integer getId_medico() {
-		return id_medico;
-	}
-	public Set<Archivos> getArchivos() {
-		return archivos;
+
+
+	@Type(type = "jsonb")
+	@Column(columnDefinition = "jsonb")
+	private JsonData data;
+
+	public Documentos() {
 	}
 
+	public JsonData getJsonData() {
+		return data;
+	}
+
+	public void setJsonData(JsonData jsonData) {
+		this.data = jsonData;
+	}
+
+	public Documentos(JsonData jsonData) {
+		this.data = jsonData;
+	}
 }
+
+
+
+
+
+//package com.uv.model;
+//
+//import javax.persistence.*;
+//
+//import com.vladmihalcea.hibernate.type.array.IntArrayType;
+//import com.vladmihalcea.hibernate.type.array.StringArrayType;
+//import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
+//import com.vladmihalcea.hibernate.type.json.JsonNodeBinaryType;
+//import com.vladmihalcea.hibernate.type.json.JsonNodeStringType;
+//import com.vladmihalcea.hibernate.type.json.JsonStringType;
+//import org.hibernate.annotations.Type;
+//import org.hibernate.annotations.TypeDef;
+//import org.hibernate.annotations.TypeDefs;
+//
+//@TypeDefs({
+//		@TypeDef(name = "string-array", typeClass = StringArrayType.class),
+//		@TypeDef(name = "int-array", typeClass = IntArrayType.class),
+//		@TypeDef(name = "json", typeClass = JsonStringType.class),
+//		@TypeDef(name = "jsonb", typeClass = JsonBinaryType.class),
+//		@TypeDef(name = "jsonb-node", typeClass = JsonNodeBinaryType.class),
+//		@TypeDef(name = "json-node", typeClass = JsonNodeStringType.class),
+//})
+//@Entity(name = "Documentos")
+//@Table(name = "documentos")
+//public class Documentos  {
+//
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	@Column(name = "id_documentos", updatable = false, nullable = false)
+//	private Integer id;
+//
+//
+//
+//	@Type(type = "jsonb")
+//	@Column(columnDefinition = "jsonb")
+//	private String data;
+//
+//	@ManyToOne
+//	@JoinColumn(name="id_paciente", nullable=false)
+//	private Paciente paciente;
+//
+//
+//	public Documentos() {
+//	}
+//
+//	public Integer getId() {
+//		return id;
+//	}
+//
+//	public void setId(Integer id) {
+//		this.id = id;
+//	}
+//
+//	public Paciente getPaciente() {
+//		return paciente;
+//	}
+//
+//	public void setPaciente(Paciente paciente) {
+//		this.paciente = paciente;
+//	}
+//
+//	public String getData() {
+//		return data;
+//	}
+//
+//	public void setData(String data) {
+//		this.data = data;
+//	}
+//
+//	public Documentos(String data) {
+//		this.data = data;
+//	}
+//}

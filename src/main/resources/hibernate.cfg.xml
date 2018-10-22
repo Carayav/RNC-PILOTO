@@ -20,14 +20,12 @@
         <mapping class="com.uv.model.Paciente"/>
         <mapping class="com.uv.model.Antecedentes"/>
         <mapping class="com.uv.model.Localizacion"/>
-        <mapping class="com.uv.model.Documentos"/>
-        <mapping class="com.uv.model.Archivos"/>
-        <mapping class="com.uv.model.Centro_derivador"/>
+        <!--<mapping class="com.uv.model.Documentos"/>-->
+        <mapping class="com.uv.model.Establecimiento"/>
         <mapping class="com.uv.model.Medico"/>
 
         <mapping class="com.uv.model.Tratamiento_indicado"/>
         <mapping class="com.uv.model.Tratamiento"/>
-        <mapping class="com.uv.model.Archivos"/>
         <mapping class="com.uv.model.Diagnostico"/>
         <mapping class="com.uv.model.PacienteSearch"/>       
     </session-factory>

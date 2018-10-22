@@ -48,7 +48,11 @@ public class Paciente implements Serializable {
 //	
 //	@OneToMany(mappedBy="paciente")
 //	private Set<Documentos> documento;
-//	
+//
+	public Paciente() {
+	}
+
+
 
 	public Paciente(com.uv.types.rnc.Documento docu) {
 		com.uv.types.rnc.Paciente paciente = docu.getHeaderDoc().getPaciente();
@@ -62,21 +66,37 @@ public class Paciente implements Serializable {
 						substring(0,paciente.getRUT().length() - 2 ));
 		this.dverificador = paciente.getRUT().
 				substring(paciente.getRUT().length() - 1 );
-		this.genero = paciente.getGenero().intValue();
-		this.nacionalidad = datosDem.getNacionalidad();
-		this.pueblo_originario = (datosDem.getPuebloOriginario());
-		this.estado_conyugal = (datosDem.getEstadoConyugal());
-		this.religion = (datosDem.getReligionCulto());
-		this.nivel_instruccion = (datosDem.getNivelInstruccion());
-		this.ocupacion = (datosDem.getOcupacion());
-		this.actividad_economica = (datosDem.getActividadEconomica());
-		this.prevision = (datosDem.getPrevision());
-		this.beneficiario_fonasa = ((int)datosDem.getBeneficiarioFonasa().charAt(0)-64);
-
-
-
+		if (paciente.getGenero().intValue() != 0){
+			this.genero = paciente.getGenero().intValue();
+		}
+		if(datosDem.getNacionalidad() != null) {
+			this.nacionalidad = datosDem.getNacionalidad();
+		}
+		if(datosDem.getPuebloOriginario() != null) {
+			this.pueblo_originario = datosDem.getPuebloOriginario();
+		}
+		if(datosDem.getEstadoConyugal() != null){
+			this.estado_conyugal = datosDem.getEstadoConyugal();
+		}
+		if(datosDem.getReligionCulto() != null){
+			this.religion = datosDem.getReligionCulto();
+		}
+		if (datosDem.getNivelInstruccion() != null){
+			this.nivel_instruccion = datosDem.getNivelInstruccion();
+		}
+		if (datosDem.getOcupacion() != null){
+			this.ocupacion = datosDem.getOcupacion();
+		}
+		if (datosDem.getActividadEconomica() != null){
+			this.actividad_economica = datosDem.getActividadEconomica();
+		}
+		if (datosDem.getPrevision() != null){
+			this.prevision = datosDem.getPrevision();
+		}
+		if (((int)datosDem.getBeneficiarioFonasa().toUpperCase().charAt(0)-64) != 0){
+			this.beneficiario_fonasa = ((int)datosDem.getBeneficiarioFonasa().toUpperCase().charAt(0)-64);
+		}
 	}
-
 
 
 	@OneToMany(mappedBy="paciente")

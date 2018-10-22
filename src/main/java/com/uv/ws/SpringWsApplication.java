@@ -10,8 +10,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 @SpringBootApplication(scanBasePackages= {"com.uv"})
-//@EnableJpaRepositories("com.uv")
-//@EntityScan("com.uv")
 public class SpringWsApplication extends SpringBootServletInitializer {
 
   public static void main(String[] args) {

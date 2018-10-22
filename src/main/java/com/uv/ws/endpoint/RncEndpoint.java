@@ -8,25 +8,30 @@ import com.google.gson.JsonParser;
 import com.uv.types.rnc.Documento;
 import com.uv.types.rnc.ObjectFactory;
 import com.uv.types.rnc.Response;
+import com.uv.ws.Services.DocumentoService;
 import com.uv.ws.endpoint.datalayer.PacienteData;
+import com.uv.ws.endpoint.utils.DocXmlToJson;
+import com.uv.ws.endpoint.utils.DocumentoServiceUtility;
+import com.uv.ws.validator.DocumentoValidator;
+import com.uv.ws.validator.ValidationException;
+import com.uv.ws.validator.rules.*;
+import org.hibernate.exception.JDBCConnectionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.validation.FieldError;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
 import org.springframework.ws.server.endpoint.annotation.RequestPayload;
 import org.springframework.ws.server.endpoint.annotation.ResponsePayload;
 
-import java.util.List;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import java.io.StringWriter;
+import java.util.Arrays;
 
 
 @Endpoint
 public class RncEndpoint {
   private static final Logger LOGGER = LoggerFactory.getLogger(RncEndpoint.class);
-
-
 
 
   @PayloadRoot(namespace = "http://uv.com/types/rnc", localPart = "Documento")
@@ -36,44 +41,44 @@ public class RncEndpoint {
     ObjectFactory factory = new ObjectFactory();
     Response response = factory.createResponse();
 
+    DocumentoService docSrv = DocumentoServiceUtility.getDocSrv();
 
-    DocumentValidator reqProc = new DocumentValidator(request);
-    List<FieldError> allErrors = reqProc.start();
-
-    for (FieldError error : allErrors) {
-      if(error.getCode().equals(ErrorCodes.ELEMENTO_VACIO_COD)){
-        response.setCodigo(ErrorCodes.ELEMENTO_VACIO_COD);
-        msj = ErrorCodes.ELEMENTO_VACIO_STR + error.getField();
-        response.setMensaje(msj);
-        LOGGER.error(msj);
-        return response;
-      } else if(error.getCode().equals(ErrorCodes.FORMATO_NO_VALIDO_COD)){
-        response.setCodigo(ErrorCodes.FORMATO_NO_VALIDO_COD);
-        msj = ErrorCodes.FORMATO_NO_VALIDO_STR + error.getField() + " VALOR: " + error.getRejectedValue();
-        response.setMensaje(msj);
-        LOGGER.error(msj);
-        return response;
-      } else if(error.getCode().equals(ErrorCodes.CODIGO_NO_VALIDO_COD)){
-        response.setCodigo(ErrorCodes.CODIGO_NO_VALIDO_COD);
-        msj = ErrorCodes.CODIGO_NO_VALIDO_STR + error.getField() + " VALOR: " + error.getRejectedValue();
-        response.setMensaje(msj);
-        LOGGER.error(msj);
-        return response;
-      }
+    try {
+        docSrv.validate(request);
     }
-      Gson gson = new GsonBuilder().setPrettyPrinting().create();
-      JsonParser jp = new JsonParser();
-      String out = (new Data(request)).toString();
-      JsonElement je = jp.parse(out);
-      String prettyJsonString = gson.toJson(je);
+    catch (ValidationException e){
+        e.printStackTrace();
+        response.setCodigo(e.getCode());
+        response.setMensaje(e.getMessage());
+        LOGGER.error(e.getMessage());
+        return response;
+    }
 
+//    Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//    JsonParser jp = new JsonParser();
+//    Marshaller jaxbMarshaller = DocXmlToJson.getMarshaller();
+//    StringWriter stringWriter = new StringWriter();
+//    try {
+//      jaxbMarshaller.marshal(request, stringWriter);
+//    } catch (JAXBException e) {
+//      e.printStackTrace();
+//    }
+//    JsonElement je = jp.parse(stringWriter.toString());
+//    String prettyJsonString = gson.toJson(je);
 
-      LOGGER.info(prettyJsonString);
+//    LOGGER.info(prettyJsonString);
 
 
     PacienteData pacData = new PacienteData();
-    pacData.save(request);
-
+    try {
+      pacData.save(request);
+    }
+    catch (JDBCConnectionException e){
+      response.setCodigo(ErrorCodes.CONEXION_BD_COD);
+      response.setMensaje(ErrorCodes.CONEXION_BD_STR);
+      LOGGER.error(e.getMessage());
+      return response;
+    }
 
     response.setCodigo(ErrorCodes.CARGA_EXITOSA_COD);
     response.setMensaje(ErrorCodes.CARGA_EXITOSA_STR);

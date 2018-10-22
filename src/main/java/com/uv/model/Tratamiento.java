@@ -1,4 +1,6 @@
 package com.uv.model;
+import com.uv.types.rnc.Documento;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,25 +19,31 @@ public class Tratamiento implements Serializable {
 	private Integer intencion_tratamiento;
 	private Date fecha_intencion;
 	private String  descripcion_tratamiento;
-	private Integer id_medico;
 
 
-	public Tratamiento(com.uv.types.rnc.Documento doc){
+
+	public Tratamiento(Documento doc, com.uv.types.rnc.Tratamiento tratamiento){
 		this.resolucion_comite = Integer.parseInt(doc.getBodyDoc().getResolucionTratamientoDoc().getTratamientoGeneral().getResolucionComite());
-		this.tipo_tratamiento = doc.getBodyDoc().getResolucionTratamientoDoc().getTratamientos().getTratamiento().get(0).getTipoTratamiento();
-		this.intencion_tratamiento = doc.getBodyDoc().getResolucionTratamientoDoc().getTratamientos().getTratamiento().get(0).getIntencionTratamiento();
-		this.fecha_intencion = doc.getBodyDoc().getResolucionTratamientoDoc().getTratamientos().getTratamiento().get(0).getFechaIntencion().toGregorianCalendar().getTime();
+		this.tipo_tratamiento = tratamiento.getTipoTratamiento();
+		this.intencion_tratamiento = tratamiento.getIntencionTratamiento();
+		this.fecha_intencion = tratamiento.getFechaIntencion().toGregorianCalendar().getTime();
 		this.descripcion_tratamiento = doc.getBodyDoc().
 				getResolucionTratamientoDoc().
 				getTratamientoGeneral().
 				getDescripcionTratamiento();
-		this.id_medico = 345;
-
 	}
 
 	@ManyToOne
     @JoinColumn(name="id_diagnostico", nullable=false)
 	private Diagnostico diagnostico;
+
+	public void setMedico(Medico medico) {
+		this.medico = medico;
+	}
+
+	@ManyToOne
+	@JoinColumn(name="id_medico", nullable=false)
+	private Medico medico;
 
 	public static long getSerialVersionUID() {
 		return serialVersionUID;
