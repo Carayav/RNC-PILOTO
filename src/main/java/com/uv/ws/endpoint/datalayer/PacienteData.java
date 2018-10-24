@@ -45,18 +45,18 @@ public class PacienteData {
             Paciente findPaciente = (Paciente) criteria.setMaxResults(1).uniqueResult();
 
 
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            JsonParser jp = new JsonParser();
-            Marshaller jaxbMarshaller = DocXmlToJson.getMarshaller();
-            StringWriter stringWriter = new StringWriter();
-            try {
-                jaxbMarshaller.marshal(docu, stringWriter);
-            } catch (JAXBException e) {
-                e.printStackTrace();
-            }
-            JsonElement je = jp.parse(stringWriter.toString());
-            String prettyJsonString = gson.toJson(je);
-            System.out.println(prettyJsonString);
+            // Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            // JsonParser jp = new JsonParser();
+            // Marshaller jaxbMarshaller = DocXmlToJson.getMarshaller();
+            // StringWriter stringWriter = new StringWriter();
+            // try {
+            //     jaxbMarshaller.marshal(docu, stringWriter);
+            // } catch (JAXBException e) {
+            //     e.printStackTrace();
+            // }
+            // JsonElement je = jp.parse(stringWriter.toString());
+            // String prettyJsonString = gson.toJson(je);
+            // System.out.println(prettyJsonString);
 
 //            Documentos docJson = new Documentos(prettyJsonString);
 
