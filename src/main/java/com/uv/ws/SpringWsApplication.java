@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class SpringWsApplication extends SpringBootServletInitializer {
 
   public static void main(String[] args) {
+      System.out.println(":::::::::::::::::::::::::::::::::::::::\n:::::::::::::::::::::::::::::::::::::::\n");
     SpringApplication.run(SpringWsApplication.class, args);
   }
 

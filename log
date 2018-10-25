@@ -1,0 +1,9 @@
+#!/bin/bash
+docker cp websphere:/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1/SystemOut.log logs/
+docker exec websphere sh -c '> /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1/SystemOut.log'
+mv logs/SystemOut.log logs/$(date  -d "today" +"%Y.%m.%d-%H:%M:%S")-Out.log
+docker cp websphere:/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1/SystemErr.log logs/
+docker exec websphere sh -c '> /opt/IBM/WebSphere/AppServer/profiles/AppSrv01/logs/server1/SystemErr.log'
+mv logs/SystemErr.log logs/$(date  -d "today" +"%Y.%m.%d-%H:%M:%S")-Err.log
+docker cp -a websphere:/opt/IBM/WebSphere/AppServer/profiles/AppSrv01/installedApps/DefaultCell01/rnc-piloto_0_0_1-SNAPSHOT_war.ear/ app_dirs/
+mv app_dirs/rnc-piloto_0_0_1-SNAPSHOT_war.ear app_dirs/$(date  -d "today" +"%Y.%m.%d-%H:%M")-rnc

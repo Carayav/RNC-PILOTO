@@ -91,7 +91,7 @@
           <version>6</version>
           <resourceRefs>
             <resourceRef>
-              <res-ref-name>jdbc/rncDS</res-ref-name>
+              <res-ref-name>jdbc/rnc</res-ref-name>
               <res-type>javax.sql.DataSource</res-type>
               <res-auth>Container</res-auth>
             </resourceRef>

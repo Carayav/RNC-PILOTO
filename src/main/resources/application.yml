@@ -11,7 +11,9 @@ spring:
     hibernate.ddl-auto: update
   datasource:
     platform: postgres
-    url: jdbc:postgresql://localhost:5432/rnc_bd
+#    url: jdbc:postgresql://localhost:5432/rnc_bd
+    dbCreate: none
+    jndiName: "java:comp/env/jdbc/rnc"
     username: postgres
     password: 123456
     driverClassName: org.postgresql.Driver

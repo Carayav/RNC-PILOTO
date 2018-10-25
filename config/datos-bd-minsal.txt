@@ -1,0 +1,9 @@
+Host: pgsqlqacl1.naiss.local
+Puerto: 5432
+Nombre base de datos: rnc
+Usuario administrador: adm_rnc
+Clave administrador: kZ4syEjf
+Usuario común: user_rnc
+Clave: aGMSyvhD
+
+jdbc:postgresql://pgsqlqacl1.naiss.local:5432/rnc??currentSchema=schema_rnc

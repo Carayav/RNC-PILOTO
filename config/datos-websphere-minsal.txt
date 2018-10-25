@@ -1,0 +1,3 @@
+websphere:172.20.4.152
+user:rnc_uv
+pass:rncdeploy
